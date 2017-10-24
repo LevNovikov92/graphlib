@@ -5,5 +5,5 @@ import lib.base.Graph
 import lib.base.Node
 import lib.base.Vertex
 
-class DirectedGraph<out N, E>(vertices: List<Vertex<N, E>>) : Graph<Vertex<N, E>>(vertices)
+class DirectedGraph<N, E>(vertices: List<Vertex<N, E>>) : Graph<Vertex<N, E>>(vertices)
     where N : Node, E : Edge

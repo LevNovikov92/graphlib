@@ -1,6 +1,6 @@
 package lib.base
 
-interface Vertex<N, E> where N : Node, E : Edge<Vertex<N, E>> {
+interface Vertex<N, E> where N : Node, E : Edge {
     fun getNode(): N
     fun getEdges(): List<E>
     fun addEdges(e: List<E>)

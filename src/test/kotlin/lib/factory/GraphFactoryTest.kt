@@ -42,7 +42,8 @@ class GraphFactoryTest {
     private fun printSimpleGraph(graph: Graph<Vertex<Node, SimpleEdge>>) {
         graph.vertices.forEach { v ->
             v.getEdges().forEach { e ->
-                println("${v.getNode().getName()} -> ${e.target().getNode().getName()}")
+                val target = e.target() as Vertex<Node, SimpleEdge> //TODO resolve unchecked cast
+                println("${v.getNode().getName()} -> ${target.getNode().getName()}")
             }
         }
     }
@@ -71,7 +72,8 @@ class GraphFactoryTest {
     private fun printWeightGraph(graph: Graph<Vertex<Node, WeightEdge>>) {
         graph.vertices.forEach { v ->
             v.getEdges().forEach { e ->
-                println("${v.getNode().getName()} -${e.getWeight()}-> ${e.target().getNode().getName()}")
+                val target = e.target() as Vertex<Node, SimpleEdge> //TODO resolve unchecked cast
+                println("${v.getNode().getName()} -${e.getWeight()}-> ${target.getNode().getName()}")
             }
         }
     }

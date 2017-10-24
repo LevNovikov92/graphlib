@@ -6,8 +6,8 @@ import lib.base.Node
 import lib.base.Vertex
 import java.util.*
 
-class UndirectedWeightGraph<N>(vertices: List<Vertex<N, WeightEdge>>) : Graph<Vertex<N, WeightEdge>>(vertices)
-    where N : Node {
+class UndirectedWeightGraph<N, E>(vertices: List<Vertex<N, E>>) : Graph<Vertex<N, E>>(vertices)
+    where N : Node, E : WeightEdge {
 
     fun findShortestPath(from: String, to: String): Int {
         val fromV = vertices
@@ -30,7 +30,7 @@ class UndirectedWeightGraph<N>(vertices: List<Vertex<N, WeightEdge>>) : Graph<Ve
             visited.add(v)
             v.getEdges().filter { !visited.contains(it.target()) }
                     .forEach { edge ->
-                        val newV: Vertex<N, E> = edge.target()
+                        val newV: Vertex<N, E> = edge.target() as Vertex<N, E> //TODO resolve unchecked cast
                         priorityQueue.add(newV to length + edge.getWeight())
                     }
         }

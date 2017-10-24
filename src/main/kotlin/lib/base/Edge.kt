@@ -1,5 +1,5 @@
 package lib.base
 
-interface Edge<V> {
-    fun target(): V
+interface Edge {
+    fun target(): Any //TODO resolve unchecked cast
 }
